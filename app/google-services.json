@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "521609309076",
+    "firebase_url": "https://albums-a3aca.firebaseio.com",
+    "project_id": "albums-a3aca",
+    "storage_bucket": "albums-a3aca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521609309076:android:69329b5528a3450e1e3d81",
+        "android_client_info": {
+          "package_name": "com.example.albums"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521609309076-bcvdoihk0b8lg6tm586ob6p4722rse0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7uIWw8afVlK4_YUTJpxu_kA_FYJ3Nx6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521609309076-bcvdoihk0b8lg6tm586ob6p4722rse0j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Albums</string>
+    <string name="log_out">Log out</string>
+    <string name="firstname">FirstName</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="sign_up">Not Registered?<u> Sign Up here</u></string>
+    <string name="phone_number">Phone Number</string>
+    <string name="pass">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+</resources>
