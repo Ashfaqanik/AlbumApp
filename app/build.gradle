@@ -10,6 +10,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 30
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
 
@@ -28,6 +29,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.android.support:design:30.0.0'
+    implementation 'com.github.hajiyevelnur92:intentanimation:1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.squareup.picasso:picasso:2.71828'

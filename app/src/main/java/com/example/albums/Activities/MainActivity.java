@@ -25,11 +25,12 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import maes.tech.intentanim.CustomIntent;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerAdapter.OnItemClickListener {
     private List<Albums> albumList;
     private RecyclerView recyclerView;
     private FirebaseAuth firebaseAuth;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     recyclerAdapter = new RecyclerAdapter(MainActivity.this, response.body());
                     recyclerView.setAdapter(recyclerAdapter);
+                    recyclerAdapter.setItemClickListener(MainActivity.this);
                     recyclerAdapter.notifyDataSetChanged();
                     mProgressBar.setVisibility(View.GONE);
                 }else {
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(id==R.id.logout)
         {
-            Toast.makeText(getApplicationContext(),"log out",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"logged out",Toast.LENGTH_SHORT).show();
             PreferenceUtils.savePassword(null, this);
             PreferenceUtils.saveEmail(null, this);
             firebaseAuth.signOut();
@@ -99,5 +101,14 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return true;
+    }
+
+    @Override
+    public void OnItemClick(Albums position) {
+        Intent detailIntent = new Intent(MainActivity.this,DetailActivity.class);
+        detailIntent.putExtra("image", position.getUrl());
+        startActivity(detailIntent);
+        CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");
+
     }
 }

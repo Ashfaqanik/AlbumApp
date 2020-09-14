@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.albums.Model.Albums;
 import com.example.albums.R;
 import com.squareup.picasso.Picasso;
@@ -18,6 +19,14 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private Context context;
     private List<Albums> albumList;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener{
+        void OnItemClick(Albums position);
+    }
+    public void setItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public RecyclerAdapter(Context context, List<Albums> albumList) {
         this.context = context;
@@ -34,20 +43,30 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, final int position) {
         final Albums albums = albumList.get(position);
         final String imageUrl,imageUrl1;
         imageUrl = albums.getUrl();
         imageUrl1 = albums.getThumbnailUrl();
         holder.text.setText(albums.getTitle());
         Picasso.get()
-                .load(imageUrl)
-                .fit()
-                .into(holder.image);
-        Picasso.get()
                 .load(imageUrl1)
                 .fit()
-                .into(holder.image1);
+                .into(holder.image);
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mListener!=null){
+                    mListener.OnItemClick(albums);
+
+                }
+            }
+        });
+
+//        Picasso.get()
+//                .load(imageUrl1)
+//                .fit()
+//                .into(holder.image1);
 
     }
 
@@ -64,8 +83,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             super(itemView);
             context = ctx;
             image = (ImageView) itemView.findViewById(R.id.imageView);
-            image1 = (ImageView) itemView.findViewById(R.id.imageView1);
+            //image1 = (ImageView) itemView.findViewById(R.id.imageView1);
             text = (TextView) itemView.findViewById(R.id.textView);
+
         }
     }
 }

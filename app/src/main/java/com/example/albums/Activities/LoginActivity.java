@@ -76,8 +76,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void loginEmailPasswordUser(final String Email, final String pwd) {
-        PreferenceUtils.saveEmail(Email, this);
-        PreferenceUtils.savePassword(pwd, this);
 
         Toast.makeText(this, "Login in progress", Toast.LENGTH_SHORT).show();
         if (!TextUtils.isEmpty(Email)
@@ -99,6 +97,8 @@ public class LoginActivity extends AppCompatActivity {
                                                     Toast.makeText(LoginActivity.this,"Logged out", Toast.LENGTH_SHORT).show();
                                                 }
                                                 else {
+                                                    PreferenceUtils.saveEmail(Email, LoginActivity.this);
+                                                    PreferenceUtils.savePassword(pwd, LoginActivity.this);
 
                                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                                     finish();
